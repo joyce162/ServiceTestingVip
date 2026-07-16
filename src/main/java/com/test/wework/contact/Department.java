@@ -14,6 +14,8 @@ public class Department {
                 .queryParam("access_token", Wework.getToken())
                 .queryParam("id", id)
                 .when()
-                .get("https://qyapi.weixin.qq.com/cgi-bin/department/list");
+                .get("https://qyapi.weixin.qq.com/cgi-bin/department/list")
+                .then().log().all()
+                .extract().response();
     }
 }
