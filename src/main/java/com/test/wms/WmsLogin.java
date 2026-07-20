@@ -2,6 +2,7 @@ package com.test.wms;
 
 import com.jayway.jsonpath.JsonPath;
 import com.utils.EncryptUtils;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 import java.security.MessageDigest;
@@ -31,5 +32,19 @@ public class WmsLogin {
                 .when().post("http://60.204.225.104:9632/login")
                 .then().log().all()
                 .extract().path("token");
+    }
+
+    public Response getHomePageList(String username, String password){
+        String authorization = "Bearer "+getLoginToken(username,password);
+
+         return given().log().all()
+                .queryParam("page","0")
+                .queryParam("size","1000")
+                .header("authorization",authorization)
+                .header("content-type","application/json;charset=UTF-8")
+                 .body("{}")
+                .when().post("http://60.204.225.104:9632/wms/area/list")
+                .then().log().all()
+                .extract().response();
     }
 }
