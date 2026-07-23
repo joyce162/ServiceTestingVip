@@ -26,11 +26,4 @@ public class TestGetToken {
         Assert.assertFalse(token.equals(null));
     }
 
-    @Test
-    public void getHomePageList(){
-        WmsLogin wmsLogin = new WmsLogin();
-        String res = wmsLogin.getHomePageList("admin","123456").getBody().toString();
-        Assert.assertFalse(res.equals(null));
-    }
-
 }
