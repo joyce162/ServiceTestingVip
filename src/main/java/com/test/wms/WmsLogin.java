@@ -3,6 +3,7 @@ package com.test.wms;
 import com.jayway.jsonpath.JsonPath;
 import com.utils.EncryptUtils;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 
 import java.security.MessageDigest;
@@ -10,6 +11,8 @@ import java.security.MessageDigest;
 import static io.restassured.RestAssured.given;
 
 public class WmsLogin {
+
+    //public RequestSpecification requestSpecification = new RequestSpecification();
 
     public String getCache(){
         return given().log().all()
